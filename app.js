@@ -42,7 +42,7 @@ if (loginForm) {
 
         if (result.success) {
             alert("Login is successed");
-            window.location.href = "entry.html";
+            window.location.href = "index.html";
         } else {
             alert("Xəta: " + result.message);
         }
