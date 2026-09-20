@@ -120,6 +120,24 @@ document.addEventListener("DOMContentLoaded", () => {
         { inputId: "profile-input", previewId: "out-instagram", defaultText: "Profile" },
         { inputId: "about", previewId: "out-about", defaultText: "Enter information about you..." }
     ];
+    const fileInput = document.getElementById("fileInput");
+    const profilePreview = document.getElementById("profile-preview");
+    const outPhoto = document.getElementById("out-photo");
+
+    if (fileInput) {
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const imgData = event.target.result;
+                if (profilePreview) profilePreview.src = imgData;
+                if (outPhoto) outPhoto.src = imgData;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
 
     function getFullName() {
         const nameval = document.getElementById("name").value.trim();

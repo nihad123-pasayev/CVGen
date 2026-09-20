@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV-Template-1</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px;
+            background-color: #f7f8fc;
+            
+           
+        }
+        @media (max-width: 900px){
+        body{
+            grid-template-columns: 1fr;
+        }
+        .rightside{
+            position: static;
+            height: auto;
+            min-height: 100vh;
+        }
+        }
+
+
+        .leftside {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .rightside {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        #infoform {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 20px;
+        }
+
+        
+        h1, .infotext, .header, .infotext-area, .additional, .title-box {
+            grid-column: span 2;
+        }
+
+        .infolabel{
+            margin-left: 0; 
+            font-size: 19px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color:rgb(78, 78, 78);
+            font-weight: 600;
+        }
+        h1{
+            font-size: 35px;
+            color:rgb(45, 45, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .infotext{
+            color:rgb(104, 104, 104);
+            text-align: center;
+            font-size: 17px;
+            font-weight: 400;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+       
+        .infoinput{
+            width: 100%; 
+            height: 40px;
+            margin-left: 0;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border:2px solid rgb(45, 45,255);
+            border-radius: 10px;
+            padding-left: 15px;
+            font-weight:500;
+            font-size: 18px;
+            box-sizing: border-box;
+            &::placeholder{
+                color:rgb(128, 128, 128);
+                font-weight: 500;
+                font-size: 16px;
+            }
+            &:focus{
+                box-shadow: 0 0 2px 2px rgb(45, 45, 255);
+                outline: none;
+            }
+        }
+        .header{
+            font-size: 26px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-left: 0;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .profil-img{
+            width:150px;
+            height:150px;
+            border:3px solid rgb(45, 45, 255);
+            border-radius: 150px;
+            object-fit: cover;
+            
+            
+        }
+        .add{
+            width:35px;
+            height: 25px;
+            border-radius: 5px;
+            margin-left: auto; /* Düyməni sağa atır */
+            background-color: rgb(65, 65, 255);
+            color:white;
+            font-size: 22px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .remove{
+            width:35px;
+            height: 25px;
+            border-radius: 5px;
+            margin-left: 8px;
+            background-color: rgb(65, 65, 255);
+            color:white;
+            font-size: 22px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .profile-select{
+            width: 100%;
+            height: 40px;
+            margin-left: 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border:2px solid rgb(45, 45,255);
+            border-radius: 10px;
+            padding-left: 10px;
+            font-weight:500;
+            font-size: 18px;
+            box-sizing: border-box;
+            visibility: hidden;
+        }
+        .lang-select{
+            width: 100%;
+            height: 40px;
+            margin-left: 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border:2px solid rgb(45, 45,255);
+            border-radius: 10px;
+            padding-left: 10px;
+            font-weight:500;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+       
+        .infotext-area{
+            width: 100%;
+            height: 120px;
+            margin-left: 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border:2px solid rgb(45, 45,255);
+            border-radius: 10px;
+            padding: 10px;
+            font-weight:500;
+            font-size: 18px;
+            box-sizing: border-box;
+            resize: vertical;
+            &::placeholder{
+                color:rgb(128, 128, 128);
+                font-weight: 500;
+                font-size: 16px;
+            }
+            &:focus{
+                box-shadow: 0 0 2px 2px rgb(45, 45, 255);
+                outline: none;
+            }
+        }
+        input[type="checkbox"]{
+            transform: scale(1.4);
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .title-box{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .additional{
+            width: 100%;
+            height: 40px;
+            margin-left: 0;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            
+            border:2px solid rgb(45, 45,255);
+            border-radius: 10px;
+            background: transparent;
+            color: rgb(45, 45, 255);
+            font-weight:600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .additional:hover {
+            background: rgb(45, 45, 255);
+            color: white;
+        }
+        .additional-part{
+            visibility: hidden;
+            grid-column: span 2;
+        }
+        .download-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(39, 39, 174);
+        color: white;
+        text-decoration: none;
+        width: 180px;
+        height: 50px;
+        white-space: nowrap;
+        border-radius: 35px;
+        font-size: 21px;
+        font-weight: 600;
+        border: 1px solid rgb(39, 39, 174);
+        
+        cursor: pointer;
+        }
+        .rightside{
+            overflow-y: auto;
+            padding: 34px 0;
+        }
+        .cv-header{
+            background: linear-gradient(120deg, #1b4d4a, #5fb8a8);
+            color: #fff;
+            padding: 30px 34px;
+            border-radius: 15px 15px 0 0;
+        }
+        .cv-name{
+            font-size: 30px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .cv-job{
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 6px;
+            opacity: .9;
+        }
+        .cv-body{
+            display: flex;
+        }
+        .cv-sidebar{
+            width: 38%;
+            padding: 24px 22px;
+            border-right: 1px solid #e5e9e8;
+        }
+        .cv-main{
+            flex: 1;
+            padding: 24px 26px;
+        }
+        .cv-side-heading{
+            color: #1b4d4a;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 0 8px;
+        }
+        .cv-side-block{
+            margin-bottom: 22px;
+        }
+        .cv-side-block p, .cv-side-block li{
+            font-size: 12.5px;
+            color: #3a3a3a;
+            line-height: 1.5;
+            margin: 3px 0;
+            word-break: break-word;
+        }
+        .cv-side-block ul{
+            margin: 4px 0 0;
+            padding-left: 16px;
+        }
+        .cv-about{
+            font-size: 12.8px;
+            line-height: 1.6;
+            color: #3a3a3a;
+            margin-bottom: 22px;
+        }
+        .cv-exp-heading{
+            color: #1b4d4a;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #5fb8a8;
+            padding-bottom: 6px;
+            margin: 0 0 12px;
+        }
+        .cv-exp-item{
+            margin-bottom: 18px;
+        }
+        .cv-exp-top{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .cv-exp-role{
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #222;
+        }
+        .cv-exp-company{
+            font-size: 12px;
+            color: #6b6b6b;
+        }
+        .cv-exp-dates{
+            font-size: 11.5px;
+            color: #6b6b6b;
+        }
+        .cv-exp-item ul{
+            margin: 6px 0 0;
+            padding-left: 16px;
+        }
+        .cv-exp-item li{
+            font-size: 12.3px;
+            margin-bottom: 3px;
+        }
+        .cv-placeholder{
+            color: #a7b0af;
+            font-style: italic;
+        }
+        .cv-hidden{
+            display: none !important;
+        }
+        .cv-profile-row{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 3px 0;
+        }
+        .cv-profile-icon{
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+        .cv-profile-text{
+            font-size: 12.5px;
+            color: #3a3a3a;
+            word-break: break-word;
+        }
+        .dyn-block .remove{
+            width: 28px;
+            height: 28px;
+        }
+        .dyn-row{
+            grid-column: span 2;
+           
+            
+        }
+        .dyn-fields-grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 20px;
+        }
+        .dyn-block input,
+        .dyn-block textarea{
+            min-width: 0;
+            max-width: 100%;
+        }
+        @media (max-width: 900px){
+            .dyn-fields-grid{
+                grid-template-columns: 1fr;
+            }
+        }
+       
+        #workscontanier{
+            grid-column: span 2;
+        }
+        #languagecontanier{
+            grid-column: span 2;
+        }
+        .infoinput:disabled{
+            background: #f0f0f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+        .cv-exp-subheading{
+            font-size: 12px;
+            font-weight: 700;
+            color: #1b4d4a;
+            margin: 8px 0 2px;
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="leftside">
+        <form action="/users/{id}" id="infoform" method="POST">
+            <h1>User Info Form</h1>
+            <p class="infotext">Enter your information to form</p>
+            
+            <p class="header">Personal information</p>
+            <div style="grid-column: span 2; text-align:center;">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <label for="fileInput" style="cursor: pointer;">
+            <img src="../profile.png" id="profile-preview" class="profil-img" style="width:190px !important; height:190px !important; ">
+            <p class="infolabel" style="font-size:14px; margin-top:6px;">Click to upload photo</p>
+            </label>
+            </div>
+            <div>
+                <label class="infolabel">Name:</label><br>
+                <input class="infoinput" type="text" placeholder="Ex: Alex" id="name" name="name">
+            </div>
+            <div>
+                <label class="infolabel">Surname:</label><br>
+                <input class="infoinput" type="text" placeholder="Ex: Jhons" id="surname" name="surname">
+            </div>
+            
+            <div style="grid-column: span 2;">
+                <label class="infolabel">Job Title:</label><br>
+                <input class="infoinput" type="text" placeholder="Ex: Frontend Developer" id="job" name="job">
+            </div>
+
+            <div>
+                <label class="infolabel">E-mail:</label><br>
+                <input class="infoinput" type="email" placeholder="Ex: alexjhons123@gmail.com" id="email" name="email">
+            </div>
+            <div>
+                <label class="infolabel">Phone Number:</label><br>
+                <input class="infoinput" type="text" placeholder="Ex: 1-23-456-78-9" id="phone" name="phone">
+            </div>
+
+            <div style="grid-column: span 2;">
+                <label class="infolabel">Location(country/city):</label><br>
+                <input class="infoinput" type="text" placeholder="Ex: Germany/Frankfurt" id="Location" name="Location">
+            </div>
+
+            <div style="grid-column: span 2;">
+            <label class="infolabel">Profiles:</label>
+            <button class="add" type="button" id="profile-add">+</button><br>
+            <select class="profile-select" id="prf-slct">
+             <option value="" disabled selected>Seçin...</option>
+            <option value="instagram">Instagram</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="github">Github</option>
+            <option value="youtube">Youtube</option>
+            </select>
+
+             <div id="profiles-container"></div>
+            </div>
+
+            <div style="grid-column: span 2;">
+                <label class="infolabel">About me:</label><br>
+                <textarea class="infotext-area" placeholder="Enter information about you..." id="about" name="about"></textarea>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="title-box">
+                <p class="header">Work Experience</p>
+                <button class="add" type="button" id="work-add">+</button>
+            </div>
+            
+            <div id="workscontanier">
+
+
+            </div>
+
+            <!-- Education -->
+            <div class="title-box">
+                <p class="header">Education</p>
+                <button class="add" type="button" id="edu-add">+</button>
+            </div>
+            <div id="educontanier" style="grid-column: span 2;"></div>
+           
+            <div class="title-box">
+                <p class="header">Skills</p>
+                <button class="add" type="button" id="skill-add">+</button>
+            </div>
+           <div id="skillscontanier" style="grid-column: span 2;"></div>
+            
+            <!-- Languages -->
+            <div class="title-box">
+                <p class="header">Languages</p>
+                <button class="add" type="button" id="lang-add">+</button>
+            </div>
+            <div id="languagecontanier" style="grid-column: span 2;"></div>
+
+            <div>
+            <button type="button" class="additional" id="cert-add">Certificates +</button>
+        </div>
+        <div>
+        <button type="button" class="additional" id="intern-add">Internships +</button>
+        </div>
+        <div style="grid-column: span 2;">
+        <button type="button" class="additional" id="volunteer-add">Volunteerings +</button>
+        </div>
+
+        <div id="certcontanier" style="grid-column: span 2;"></div>
+        <div id="interncontanier" style="grid-column: span 2;"></div>
+        <div id="volunteercontanier" style="grid-column: span 2;"></div>
+        </form>
+        <button class="download-btn" id="download-pdf-btn">Download PDF</button>
+    </div>
+    
+    <div class="rightside">
+        <div class="cv-body" style="display: flex; gap: 25px;">
+            
+          
+            <div class="cv-sidebar" style="width: 35%;">
+                
+                <div class="cv-photo-container" style="width: 140px; height: 140px; margin: 0 auto 20px auto; border: 3px solid #1e3a8a; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center;">  
+                    <img src="../profile.png" id="out-photo" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+                <div class="cv-side-block">
+                    <div class="cv-side-heading">Contacts</div>
+                    <p id="out-phone" class="cv-placeholder">Phone</p>
+                    <p id="out-location" class="cv-placeholder">Address</p>
+                    <p id="out-email" class="cv-placeholder">Email</p>
+                    
+                    <div id="out-instagram" class="cv-profile-row cv-hidden">
+                        <img src="../icons/instagram.png" class="cv-profile-icon" alt="">
+                        <span class="cv-profile-text"></span>
+                    </div>
+                    <div id="out-linkedin" class="cv-profile-row cv-hidden">
+                        <img src="../icons/linkedin.png" class="cv-profile-icon" alt="">
+                        <span class="cv-profile-text"></span>
+                    </div>
+                    <div id="out-github" class="cv-profile-row cv-hidden">
+                        <img src="../icons/github.png" class="cv-profile-icon" alt="">
+                        <span class="cv-profile-text"></span>
+                    </div>
+                    <div id="out-youtube" class="cv-profile-row cv-hidden">
+                        <img src="../icons/youtube.png" class="cv-profile-icon" alt="">
+                        <span class="cv-profile-text"></span>
+                    </div>
+                </div>
+
+                <div class="cv-side-block">
+                    <div class="cv-side-heading">Skills</div>
+                    <ul id="out-skills"><li class="cv-placeholder">No skills added</li></ul>
+                </div>
+
+                <div class="cv-side-block">
+                    <div class="cv-side-heading">Languages</div>
+                    <ul id="out-languages"><li class="cv-placeholder">No languages added</li></ul>
+                </div>
+            </div>
+
+         
+            <div class="cv-main" style="flex: 1;">
+                
+                <div class="cv-header" style="background: transparent; padding: 0 0 10px 0; margin-bottom: 15px; border-bottom: 1px solid #cbd5e1;">
+                    <h2 class="cv-name" id="out-name" style="color: #1e3a8a; font-size: 24px; margin: 0;">YOUR NAME</h2>
+                    <div class="cv-job" id="out-job" style="color: #64748b; font-size: 12px; font-weight: 600; margin-top: 4px;">JOB TITLE</div>
+                </div>
+
+                <p class="cv-about" id="out-about">Enter information about you...</p>
+
+                <div class="cv-exp-heading">Education</div>
+                <div id="out-education"><p class="cv-placeholder">No education added</p></div>
+
+                <div class="cv-exp-heading">Work Experience</div>
+                <div id="out-experience"><p class="cv-placeholder">No experience added yet</p></div>
+
+                <div class="cv-exp-heading cv-hidden" id="cert-block">Certificates</div>
+                <ul class="cv-hidden" id="out-certificates" style="padding-left:16px;"></ul>
+
+                <div class="cv-exp-heading cv-hidden" id="intern-block">Internships</div>
+                <ul class="cv-hidden" id="out-internships" style="padding-left:16px;"></ul>
+
+                <div class="cv-exp-heading cv-hidden" id="volunteer-block">Volunteerings</div>
+                <ul class="cv-hidden" id="out-volunteerings" style="padding-left:16px;"></ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script src="../app.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
